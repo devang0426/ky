@@ -1,0 +1,14 @@
+import type { MetadataRoute } from "next";
+import { products } from "@/lib/products";
+import { site } from "@/lib/site";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+  return [
+    { url: `${site.url}/`, lastModified: now, priority: 1 },
+    { url: `${site.url}/shop`, lastModified: now, priority: 0.9 },
+    { url: `${site.url}/about`, lastModified: now, priority: 0.6 },
+    { url: `${site.url}/contact`, lastModified: now, priority: 0.6 },
+    ...products.map((p) => ({ url: `${site.url}/shop/${p.slug}`, lastModified: now, priority: 0.8 })),
+  ];
+}

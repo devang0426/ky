@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Direction A — warm terracotta on cream. Tokens lifted from the design directions file. */
+@theme {
+  --color-cream: #f4ebdd;
+  --color-paper: #fbf1e4;
+  --color-field: #fbf5ec;
+  --color-field-border: #c9b69c;
+  --color-ink: #1c110c;
+  --color-body: #3a2a20;
+  --color-muted: #5a463a;
+  --color-line: #d9c7ae;
+  --color-sand: #e5d3b8;
+  --color-accent: #c4501e;
+  --color-accent-deep: #a8410f;
+  --color-wine: #6b1426;
+  --color-emerald: #1f6b4a;
+  --color-gold: #e5b58a;
+  --color-crimson: #b7223f;
+
+  --font-sans: var(--font-karla), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reusable pieces that repeat across every page in the design. */
+@utility eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@utility btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 30px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    opacity 150ms ease;
+  white-space: nowrap;
+}
+
+@utility link-underline {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 4px;
+  align-self: flex-start;
+}
+
+@utility field {
+  height: 48px;
+  width: 100%;
+  border: 1px solid var(--color-field-border);
+  background: var(--color-cream);
+  padding: 0 14px;
+  font-size: 15px;
+  color: var(--color-ink);
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.field:focus,
+textarea.field:focus,
+select.field:focus {
+  border-color: var(--color-ink);
+}
+
+em {
+  font-style: italic;
 }
